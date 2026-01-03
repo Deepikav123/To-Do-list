@@ -1,7 +1,9 @@
-.whole{
+.whole {
 
-    margin: 60px;
+    margin-left: 160px;
+    margin-right: 160px;
 }
+
 .status {
     height: 150px;
     background-color: rgb(67, 22, 49);
@@ -25,29 +27,89 @@
 }
 
 
-@media (max-width:570px){
-    .status{
+
+
+/* For adding new task */
+.addTask {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: rgb(67, 22, 49);
+    color: white;
+    padding: 15px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.d{
+    box-shadow: 0 0 2px gray;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+   
+}
+.enter{
+    display: none;
+}
+
+.d .enter {
+
+    border: 1px solid gray;
+    width: 580px;
+    padding: 10px;
+display: initial;
+}
+.buttons{
+    display: none;
+}
+.d .buttons {
+    padding: 20px;
+    gap: 10px;
+    display: initial;
+}
+
+.d .b {
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: rgb(67, 22, 49);
+    cursor: pointer;
+}
+
+
+@media (max-width:570px) {
+    .whole {
+
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .status {
         padding: 10px;
         height: 100px;
     }
-    .heading{
-        font-size:larger;
+
+    .heading {
+        font-size: larger;
     }
-    .done{
+
+    .done {
         font-size: large;
     }
-}
 
-/* For adding new task */
-.addTask{
-margin-top: 30px;
-margin-bottom: 30px;
-background-color: rgb(67, 22, 49);
-color: white;
-padding: 15px;
-border-radius: 40px;
-display: flex;
-justify-content: center;
-font-weight: bold;
-cursor: pointer;
+    .data {
+        padding: 10px;
+
+    }
+
+    .enter {
+        width: 120px;
+        padding: 7px;
+    }
+
+    .b {
+        padding: 7px;
+    }
 }
