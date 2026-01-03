@@ -43,27 +43,33 @@
     cursor: pointer;
 }
 
-.d{
+.d {
     box-shadow: 0 0 2px gray;
     display: flex;
     padding: 20px;
     align-items: center;
-   
+
 }
-.enter{
+
+.enter {
     display: none;
 }
 
 .d .enter {
 
     border: 1px solid gray;
-    width: 580px;
+    display: flex;
+    flex-grow: 1;
+    /* width: 580px; */
     padding: 10px;
-display: initial;
+    display: initial;
+    
 }
-.buttons{
+
+.buttons {
     display: none;
 }
+
 .d .buttons {
     padding: 20px;
     gap: 10px;
@@ -78,8 +84,69 @@ display: initial;
     cursor: pointer;
 }
 
+/* For list */
 
-@media (max-width:570px) {
+.listItems {
+    margin: 20px 30px;
+    
+}
+
+.task {
+    box-shadow: 0 0 1px gray;
+    padding: 20px;
+    height: 60px;
+    display: flex;
+    justify-content:space-between;
+}
+.left{
+
+    margin-left: 20px;
+}
+
+.taskName {
+    display: flex;
+}
+.name{
+    margin-left: 4px;
+font-size: 25px;
+}
+.check {
+    height: 20px;
+    width: 20px;
+}
+.date{
+    margin: 3px;
+    font-size: 15px;
+    color: gray;
+}
+.taskButtons{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin: 20px;
+}
+.tb{
+    height: 30px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+border: none;
+color: white;
+font-weight: bold;
+border-radius: 25px;
+cursor: pointer;
+}
+.tb1{
+    background-color: green;
+}
+.tb2{
+    background-color: red;
+}
+
+
+
+@media (max-width:750px) {
     .whole {
 
         margin-left: 100px;
@@ -103,13 +170,49 @@ display: initial;
         padding: 10px;
 
     }
+    .d{
+        flex-direction: column;
+        padding: auto;
+    }
 
     .enter {
         width: 120px;
-        padding: 7px;
+        padding: 3px;
+        flex-grow: 1;
     }
 
     .b {
         padding: 7px;
     }
+
+
+
+    .taskName {
+    display: flex;
+}
+.name{
+    margin-left: 4px;
+font-size: 20px;
+}
+.check {
+    height: 15px;
+    width: 15px;
+}
+.date{
+    margin: 3px;
+    font-size: 13px;
+    color: gray;
+}
+.taskButtons{
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin: 15px;
+}
+.tb{
+    height: 20px;
+    padding: 15px 20px;
+
+}
+
 }
