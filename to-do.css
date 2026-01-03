@@ -1,0 +1,34 @@
+.status {
+    height: 150px;
+    background-color: rgb(67, 22, 49);
+    margin: 60px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.heading {
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+.done {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+
+@media (max-width:570px){
+    .status{
+        padding: 10px;
+    }
+    .heading{
+        font-size:larger;
+    }
+    .done{
+        font-size: large;
+    }
+}
