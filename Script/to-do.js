@@ -18,18 +18,21 @@ document.querySelector('.addTask').addEventListener('click',()=>{
 
 
 
+let v=document.querySelector('.enter');
+let val=v.value;
 // Event listener to add task
 document.querySelector('.b2').addEventListener('click',()=>{
 document.querySelector('.data').classList.remove('d')
 // To store input value
-let v=document.querySelector('.enter');
-let val=v.value;
 list.push(val)
 console.log(list)
 all()
 })
 
-
+// Event listener to cancel button
+document.querySelector('.b1').addEventListener('click',()=>{
+v.value='';
+})
 
 // Tasks
     let tasks=``;
