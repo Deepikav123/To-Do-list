@@ -1,43 +1,57 @@
 import { list } from "./List.js"
 
-function all(){
-let code=`<div class="data">
+function all() {
+    let code = `<div class="data">
                 <input class="enter" placeholder="Enter the task">
                 <div class="buttons">
                     <button class="b b1">Cancel</button>
                     <button class="b b2">Add Task</button>
                 </div>
             </div>`
-document.querySelector('.taskInsertion').innerHTML=code
+    document.querySelector('.taskInsertion').innerHTML = code
 
-// Event listener to + Add Task
-document.querySelector('.addTask').addEventListener('click',()=>{
-    document.querySelector('.data').classList.add('d')
-})
-
-
+    // Event listener to + Add Task
+    document.querySelector('.addTask').addEventListener('click', () => {
+        document.querySelector('.data').classList.add('d')
+    })
 
 
-let v=document.querySelector('.enter');
-let val=v.value;
-// Event listener to add task
-document.querySelector('.b2').addEventListener('click',()=>{
-document.querySelector('.data').classList.remove('d')
-// To store input value
-list.push(val)
-console.log(list)
-all()
-})
 
-// Event listener to cancel button
-document.querySelector('.b1').addEventListener('click',()=>{
-v.value='';
-})
 
-// Tasks
-    let tasks=``;
-    list.forEach((e=>{
-    tasks+=`
+    // To store input value
+    let v = document.querySelector('.enter');
+
+    // To get date
+    let d = new Date();
+    let dat = d.getDate();
+    let month = d.getMonth() + 1;
+    let year = d.getFullYear();
+    let format = `${dat}/${month}/${year}`
+
+    // Event listener to add task
+    document.querySelector('.b2').addEventListener('click', () => {
+        document.querySelector('.data').classList.remove('d')
+        let val = v.value;
+        console.log(val)
+        list.push(
+            {
+                name: val,
+                date: format
+            }
+        )
+        console.log(list)
+        all()
+    })
+
+    // Event listener to cancel button
+    document.querySelector('.b1').addEventListener('click', () => {
+        v.value = '';
+    })
+
+    // Tasks
+    let tasks = ``;
+    list.forEach((e => {
+        tasks += `
      <div class="task">
                 <div class="left">
 
@@ -53,10 +67,10 @@ v.value='';
                 </div>
             </div>
             `
-          
 
-            document.querySelector('.listItems').innerHTML=tasks
- }))
+
+        document.querySelector('.listItems').innerHTML = tasks
+    }))
 
 }
 all()
