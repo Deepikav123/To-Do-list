@@ -1,6 +1,6 @@
-import { list } from "./List.js"
-
-function all() {
+import { list, Task } from "./List.js"
+Task()
+export function all() {
     let code = `<div class="data">
                 <input class="enter" placeholder="Enter the task">
                 <div class="buttons">
@@ -28,7 +28,7 @@ function all() {
     let year = d.getFullYear();
     let format = `${dat}/${month}/${year}`
 
-    // Event listener to add task
+    // Add task button
     document.querySelector('.b2').addEventListener('click', () => {
         document.querySelector('.data').classList.remove('d')
         let val = v.value;
@@ -36,41 +36,19 @@ function all() {
         list.push(
             {
                 name: val,
-                date: format
+                date: format,
+                id: crypto.randomUUID()
             }
         )
         console.log(list)
+        Task()
         all()
     })
 
-    // Event listener to cancel button
+    //  cancel button
     document.querySelector('.b1').addEventListener('click', () => {
         v.value = '';
     })
-
-    // Tasks
-    let tasks = ``;
-    list.forEach((e => {
-        tasks += `
-     <div class="task">
-                <div class="left">
-
-                    <div class="taskName">
-                        <input type="checkbox" class="check">
-                        <div class="name">${e.name}</div>
-                    </div>
-                    <div class="date">${e.date}</div>
-                </div>
-                <div class="taskButtons">
-                    <button class="tb tb1">Edit</button>
-                    <button class="tb tb2">Delete</button>
-                </div>
-            </div>
-            `
-
-
-        document.querySelector('.listItems').innerHTML = tasks
-    }))
 
 }
 all()
