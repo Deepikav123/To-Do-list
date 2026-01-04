@@ -2,12 +2,14 @@
 export let list = [{
     name: "Cook",
     date: "31/02/26",
-    id: 'dwnenjdenjnrdj'
+    id: 'dwnenjdenjnrdj',
+    completed:0
 },
 {
     name: "Clean",
     date: "31/02/26",
-    id: 'ehdnehjnde'
+    id: 'ehdnehjnde',
+    completed:0
 }
 ]
 export function Task() {
@@ -19,7 +21,7 @@ export function Task() {
                 <div class="left">
 
                     <div class="taskName">
-                        <input type="checkbox" class="check">
+                        <input type="checkbox" class="check" ${e.completed?'checked':''} data-cid=${e.id}>
                         <div class="name">${e.name}</div>
                     </div>
                     <div class="date">${e.date}</div>
@@ -40,14 +42,9 @@ export function Task() {
         let id = ele.dataset.eid;
         ele.addEventListener('click', () => {
             document.querySelector('.data').classList.add('d');
+            let match = matching(id);
             let v = document.querySelector('.enter');
-            let match;
-            list.forEach((e) => {
-                if (id == e.id) {
-                    match = e.name
-                }
-            })
-            v.value = match
+            v.value = match.name;
             filter(id)
         })
     })
@@ -64,6 +61,14 @@ export function Task() {
     })
 
 
+    // Checkbox
+    document.querySelectorAll('.check').forEach((e) => {
+        let id = e.dataset.cid;
+        e.addEventListener('click', () => {
+            append(id)
+        })
+    })
+
 
     function filter(deleteId) {
         let newList = []
@@ -73,11 +78,38 @@ export function Task() {
             }
         })
         list = newList;
-        console.log(list)
         Task()
     }
 
+    function matching(id) {
+        let match;
+        list.forEach((e) => {
+            if (e.id == id) {
+                match = e;
+            }
+        })
+        return match
+    }
 
+    function append(id){
+        
+     let n=[]
+     let same;
+     list.forEach((ele)=>{
+        if(id!=ele.id){
+            n.push(ele)
+        }
+        else{
+            ele.completed=1
+            same=ele
+        }
+
+     })
+     n.push(same)
+list=n;
+console.log(list)
+Task()
+    }
 }
 
 
