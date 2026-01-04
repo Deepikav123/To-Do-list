@@ -145,10 +145,6 @@ cursor: pointer;
     background-color: red;
 }
 
-.n{
-    text-decoration: line-through;
-}
-
 @media (max-width:750px) {
     .whole {
 

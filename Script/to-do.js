@@ -38,7 +38,7 @@ export function all() {
                 name: val,
                 date: format,
                 id: crypto.randomUUID(),
-                completed:'false'
+                completed:0
             }
         )
         console.log(list)

@@ -3,13 +3,13 @@ export let list = [{
     name: "Cook",
     date: "31/02/26",
     id: 'dwnenjdenjnrdj',
-    completed:0
+    completed: 0
 },
 {
     name: "Clean",
     date: "31/02/26",
     id: 'ehdnehjnde',
-    completed:0
+    completed: 0
 }
 ]
 export function Task() {
@@ -21,7 +21,7 @@ export function Task() {
                 <div class="left">
 
                     <div class="taskName">
-                        <input type="checkbox" class="check" ${e.completed?'checked':''} data-cid=${e.id}>
+                        <input type="checkbox" class="check" ${e.completed ? 'checked' : ''} data-cid=${e.id}>
                         <div class="name">${e.name}</div>
                     </div>
                     <div class="date">${e.date}</div>
@@ -35,7 +35,22 @@ export function Task() {
 
 
     }))
-    document.querySelector('.listItems').innerHTML = tasks
+ document.querySelector('.listItems').innerHTML = tasks
+
+
+    // Task status
+    let status = `  <div class="heading">
+                Tasks completed
+            </div>
+            <div class="done">
+                <div class="score">
+                    ${finished()}/${total()}
+                </div>
+            </div>`
+
+document.querySelector('.status').innerHTML=status
+
+   
 
     // Edit button
     document.querySelectorAll('.tb1').forEach((ele) => {
@@ -91,25 +106,45 @@ export function Task() {
         return match
     }
 
-    function append(id){
-        
-     let n=[]
-     let same;
-     list.forEach((ele)=>{
-        if(id!=ele.id){
-            n.push(ele)
-        }
-        else{
-            ele.completed=1
-            same=ele
-        }
+    function append(id) {
 
-     })
-     n.push(same)
-list=n;
-console.log(list)
-Task()
+        let n = []
+        let same;
+        list.forEach((ele) => {
+            if (id != ele.id) {
+                n.push(ele)
+            }
+            else {
+                ele.completed = 1
+                same = ele
+            }
+
+        })
+        n.push(same)
+        list = n;
+        console.log(list)
+        Task()
+    }
+
+
+    function total() {
+        let tot = 0;
+        list.forEach((ele) => {
+            tot += 1;
+        })
+        return tot;
+    }
+
+    function finished() {
+        let fin = 0;
+        list.forEach((ele) => {
+            if (ele.completed) {
+                fin++;
+            }
+        })
+        return fin;
     }
 }
+
 
 
