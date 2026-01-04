@@ -1,17 +1,9 @@
 
-export let list = [{
-    name: "Cook",
-    date: "31/02/26",
-    id: 'dwnenjdenjnrdj',
-    completed: 0
-},
-{
-    name: "Clean",
-    date: "31/02/26",
-    id: 'ehdnehjnde',
-    completed: 0
+export let list = JSON.parse(localStorage.getItem('storage')) || []
+// Local storage
+export function store() {
+    localStorage.setItem('storage', JSON.stringify(list))
 }
-]
 export function Task() {
 
     let tasks = ``;
@@ -32,10 +24,9 @@ export function Task() {
                 </div>
             </div>
             `
-
-
     }))
- document.querySelector('.listItems').innerHTML = tasks
+    
+    document.querySelector('.listItems').innerHTML = tasks
 
 
     // Task status
@@ -48,9 +39,9 @@ export function Task() {
                 </div>
             </div>`
 
-document.querySelector('.status').innerHTML=status
+    document.querySelector('.status').innerHTML = status
 
-   
+
 
     // Edit button
     document.querySelectorAll('.tb1').forEach((ele) => {
@@ -71,7 +62,7 @@ document.querySelector('.status').innerHTML=status
         let id = e.dataset.did;
         e.addEventListener('click', () => {
             filter(id)
-
+            store()
         })
     })
 
@@ -81,10 +72,12 @@ document.querySelector('.status').innerHTML=status
         let id = e.dataset.cid;
         e.addEventListener('click', () => {
             append(id)
+            store()
         })
     })
 
 
+    // Functions
     function filter(deleteId) {
         let newList = []
         list.forEach((ele) => {
@@ -106,25 +99,7 @@ document.querySelector('.status').innerHTML=status
         return match
     }
 
-    function append(id) {
-
-        let n = []
-        let same;
-        list.forEach((ele) => {
-            if (id != ele.id) {
-                n.push(ele)
-            }
-            else {
-                ele.completed = 1
-                same = ele
-            }
-
-        })
-        n.push(same)
-        list = n;
-        console.log(list)
-        Task()
-    }
+  
 
 
     function total() {
@@ -145,6 +120,24 @@ document.querySelector('.status').innerHTML=status
         return fin;
     }
 }
+  function append(id) {
 
+        let n = []
+        let same;
+        list.forEach((ele) => {
+            if (id != ele.id) {
+                n.push(ele)
+            }
+            else {
+                ele.completed = 1
+                same = ele
+            }
+
+        })
+        n.push(same)
+        list = n;
+        console.log(list)
+        Task()
+    }
 
 

@@ -1,4 +1,4 @@
-import { list, Task } from "./List.js"
+import { list, Task,store} from './List.js'
 Task()
 export function all() {
     let code = `<div class="data">
@@ -14,9 +14,6 @@ export function all() {
     document.querySelector('.addTask').addEventListener('click', () => {
         document.querySelector('.data').classList.add('d')
     })
-
-
-
 
     // To store input value
     let v = document.querySelector('.enter');
@@ -43,6 +40,7 @@ export function all() {
         )
         console.log(list)
         Task()
+        store()
         all()
     })
 
